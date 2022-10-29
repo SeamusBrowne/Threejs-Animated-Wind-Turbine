@@ -99,17 +99,13 @@
 
 			function render() {
 
-				// const time = - performance.now() / 1000;
+				const time = - performance.now() / 1000;
 
-				// for ( let i = 0; i < rotor.length; i ++ ) {
+				for ( let i = 0; i < rotor.length; i ++ ) {
 
-				// 	rotor[ i ].rotation.x = time * Math.PI;
+					rotor[ i ].rotation.x = time * Math.PI;
 
-				// }
-
-                const time = - performance.now() / 1000;
-
-                rotor.rotation.x = time * Math.PI;
+				}
 
 				renderer.render( scene, camera );
 
