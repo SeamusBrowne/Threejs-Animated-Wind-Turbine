@@ -4,6 +4,7 @@
 
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
+			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 			import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
@@ -36,12 +37,27 @@
 				//
 
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 100 );
-				camera.position.set( 4.25, 1.4, - 4.5 );
+				camera.position.set( 10, 5, 16 );
 
 				controls = new OrbitControls( camera, container );
-				controls.target.set( 0, 0.5, 0 );
+				controls.target.set( 0, 10, 0 );
 				controls.update();
+				
+				new RGBELoader()
+				.setDataType( THREE.UnsignedByteType )
+				.setPath( 'textures/equirectangular/' )
+				.load( 'free_sky_dome_tl1_391.hdr', function ( texture ) {
 
+					const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+
+					scene.background = envMap;
+					//scene.environment = envMap;
+
+					texture.dispose();
+					pmremGenerator.dispose();
+                		} );
+
+				
 				const pmremGenerator = new THREE.PMREMGenerator( renderer );
 
 				scene = new THREE.Scene();
@@ -52,11 +68,11 @@
 				// materials
 
 				const turbineMaterial = new THREE.MeshPhysicalMaterial( {
-					color: 0xffffff, metalness: 0.2, roughness: 0.2, clearcoat: 0.05, clearcoatRoughness: 0.05
+					color: 0xc8c8c8, metalness: 0.2, roughness: 0.4, clearcoat: 0.2, clearcoatRoughness: 0.4
 				} );
 
-				const bodyColorInput = document.getElementById( 'turbineColour' );
-				bodyColorInput.addEventListener( 'input', function () {
+				const turbineColourInput = document.getElementById( 'turbineColour' );
+				turbineColourInput.addEventListener( 'input', function () {
 
 					turbineMaterial.color.set( this.value );
 
@@ -64,19 +80,18 @@
 
 				// Wind Turbine
 
-				const shadow = new THREE.TextureLoader().load( 'models/gltf/ferrari_ao.png' );
-
 				const dracoLoader = new DRACOLoader();
 				dracoLoader.setDecoderPath( 'js/libs/draco/gltf/' );
 
 				const loader = new GLTFLoader();
 				loader.setDRACOLoader( dracoLoader );
 
-				loader.load( 'models/gltf/windTurbine.glb', function ( gltf ) {
+				loader.load( 'models/windTurbine.glb', function ( gltf ) {
 
 					const turbineModel = gltf.scene.children[ 0 ];
 
 					turbineModel.getObjectByName( 'Turbine' ).material = turbineMaterial;
+					turbineModel.getObjectByName( 'Rotor' ).material = turbineMaterial;
 
 					rotor.push(
 						turbineModel.getObjectByName( 'Rotor' )
@@ -99,11 +114,11 @@
 
 			function render() {
 
-				const time = - performance.now() / 1000;
+				const time = - performance.now() / 1500;
 
-				for ( let i = 0; i < rotor.length; i ++ ) {
+				for ( let i = 0; i < rotor.length; i++ ) {
 
-					rotor[ i ].rotation.x = time * Math.PI;
+					rotor[i].rotation.z = time * Math.PI;
 
 				}
 
