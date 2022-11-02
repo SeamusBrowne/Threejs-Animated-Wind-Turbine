@@ -20,6 +20,7 @@ p {
 	transform: translate(50%, -50%);
 	text-align: center;
 	line-height: 50px;
+	pointer-events: none;
 }
 .quoteBox:before {
 	content: '';
