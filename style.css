@@ -1,0 +1,30 @@
+body {
+	margin: 0;
+	background-color: #000;
+	color: #fff;
+	font-family: Monospace;
+	font-size: 13px;
+	line-height: 24px;
+	overscroll-behavior: none;
+}
+p {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 1.3rem;
+	color: white;
+}
+.quoteBox {
+	position: absolute;
+	z-index: 1;
+	width: 50%;
+	top: 50%;
+	transform: translate(50%, -50%);
+	text-align: center;
+	line-height: 50px;
+}
+.quoteBox:before {
+	content: '';
+	top: 0;
+	left: 0;
+	width: 100%;
+	transform: scaleY(1)
+}
