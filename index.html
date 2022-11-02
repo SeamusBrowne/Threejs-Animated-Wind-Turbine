@@ -8,13 +8,24 @@
 	</head>
 
 	<body>
-    <script src ="main.js" type="module"></script>
-		<div id="banner">
-			<br><br>
-            <span class="colorPicker"><input id="turbineColour" type="color" value="#ffffff"></input><br/>Turbine Colour</span>
+    		<script src ="main.js" type="module"></script>
+		
+		<div class="quoteBox">
+			<p>For a Brighter Tomorrow.</p>
 		</div>
 
 		<div id="container"></div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/CSSRulePlugin.min.js" integrity="sha512-2+BGFUqT8mzxE2ifxQK7kcEhOeHaO5EOrUgRIUJ9+HoIw8zQHI+HvnVrgGjwW0qL5dpGv8ao2oZlBS7IvvCuhA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<script>
+			const quoteAnimate = CSSRulePlugin.getRule('.quoteBox:before');
+			const quote = document.querySelector('p');
+			const timeline = gsap.timeline();
+			timeline.from(quoteAnimate, { delay: 1, CSSRule: {scaleY: 0}})
+			timeline.to(quote, {duration: 3.5, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'})
+		</script>
 
 	</body>
 </html>
