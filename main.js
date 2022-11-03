@@ -1,6 +1,6 @@
       import * as THREE from '../build/three.module.js';
 
-	import Stats from './jsm/libs/stats.module.js';
+	//import Stats from './jsm/libs/stats.module.js';
 
 	import { OrbitControls } from './jsm/controls/OrbitControls.js';
 	import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
@@ -10,7 +10,7 @@
 	import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
 
 	let camera, scene, renderer;
-	let stats;
+	//let stats;
 
 	let controls;
 
@@ -31,16 +31,14 @@
 
 		window.addEventListener( 'resize', onWindowResize );
 
-		stats = new Stats();
-		container.appendChild( stats.dom );
-
-		//
+		//stats = new Stats();
+		//container.appendChild( stats.dom );
 
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 100 );
 		camera.position.set( 10, 5, 16 );
 
 		controls = new OrbitControls( camera, container );
-		controls.target.set( 0, 10, 0 );
+		controls.target.set( 0, 10, 2 );
 		controls.update();
 		
 		new RGBELoader()
@@ -51,12 +49,10 @@
 			const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
 
 			scene.background = envMap;
-			//scene.environment = envMap;
 
 			texture.dispose();
 			pmremGenerator.dispose();
        		} );
-
 		
 		const pmremGenerator = new THREE.PMREMGenerator( renderer );
 
@@ -64,8 +60,6 @@
 		scene.background = new THREE.Color( 0xeeeeee );
 		scene.environment = pmremGenerator.fromScene( new RoomEnvironment() ).texture;
 
-
-		// materials
 
 		const turbineMaterial = new THREE.MeshPhysicalMaterial( {
 			color: 0xc8c8c8, metalness: 0.2, roughness: 0.4, clearcoat: 0.2, clearcoatRoughness: 0.4
@@ -117,7 +111,7 @@
 
 		renderer.render( scene, camera );
 
-		stats.update();
+		//stats.update();
 
 	}
 
