@@ -11,7 +11,7 @@
     		<script src ="main.js" type="module"></script>
 		
 		<div class="quoteBox">
-			<p>For a Brighter Tomorrow.</p>
+			<p>Changing today for a better tomorrow.</p>
 		</div>
 
 		<div id="container"></div>
@@ -24,7 +24,7 @@
 			const quote = document.querySelector('p');
 			const timeline = gsap.timeline();
 			timeline.from(quoteAnimate, { delay: 1, CSSRule: {scaleY: 0}})
-			timeline.to(quote, {duration: 3.5, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'})
+			timeline.to(quote, {duration: 4, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'})
 		</script>
 
 	</body>
