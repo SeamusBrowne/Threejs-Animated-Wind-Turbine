@@ -1,13 +1,22 @@
-      import * as THREE from '../build/three.module.js';
+	<script type="importmap">
+	{
+		"imports": {
+			"three": "../build/three.module.js",
+			"three/addons/": "./jsm/"
+		}
+	}
+	</script>
 
-	//import Stats from './jsm/libs/stats.module.js';
+	import * as THREE from 'three';
 
-	import { OrbitControls } from './jsm/controls/OrbitControls.js';
-	import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
-	import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+	//import Stats from 'three/addons/libs/stats.module.js';
 
-	import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-	import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
+	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+	import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+	import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+	import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 	let camera, scene, renderer;
 	//let stats;
