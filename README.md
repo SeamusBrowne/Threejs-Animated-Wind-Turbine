@@ -12,4 +12,4 @@ Conceptual idea for energy or green companies' website banners to concisely high
 
 The HDRI for the equirectanglur background can be download for free at https://hdrmaps.com/free-sky-dome-timelapse-1/
 
-Youtube video coming soon!
+Youtube video: https://www.youtube.com/watch?v=PArLGFXY-Ws
