@@ -2,7 +2,7 @@
 
 3D Wind Turbine with an animated rotor.
 
-A Three.JS animated wind turbine in 3D that has an infinitly looping animation of a turbines blades and rotor.
+A Three.JS animated wind turbine in 3D that has an infinitely looping animation of a turbines blades and rotor.
 
 ![Screenshot (52)](https://github.com/SeamusBrowne/Threejs-Animated-Wind-Turbine/assets/31517569/e2dccb29-caa1-439a-82ff-cd1766b3217c)
 
